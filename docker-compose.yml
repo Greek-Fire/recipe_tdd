@@ -9,5 +9,5 @@ services:
     ports:
     - "8000:8000"
     volumes:
-    - /var/home/core/recipe_tdd/app:/home/django/app
+    - /tmp/recipe_tdd/app:/home/django/app
     command: sh -c "python manage.py runserver 0.0.0.0:8000"
