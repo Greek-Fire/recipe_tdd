@@ -8,7 +8,7 @@ EXPOSE 8000
 ARG DEV=false
 COPY ./requirements.txt /tmp/requirements.txt
 COPY ./requirements.dev.txt /tmp/requirements.dev.txt
-COPY /tmp/recipe_tdd/app /home/django/app
+COPY /var/tmp/recipe_tdd/app /home/django/app
 
 # Create a virtual environment and install dependencies
 # virtualenv is a tool to create isolated Python environments
@@ -26,7 +26,7 @@ RUN python -m venv /py && \
     --password  ""\
     -g django \
     django && \
-    chown -R django:django /home/django
+    chown -R django:django /home/django/app
 
 ENV PATH="/py/bin:${PATH}"
 
