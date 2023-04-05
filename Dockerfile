@@ -8,7 +8,7 @@ EXPOSE 8000
 ARG DEV=false
 COPY ./requirements.txt /tmp/requirements.txt
 COPY ./requirements.dev.txt /tmp/requirements.dev.txt
-COPY /var/tmp/recipe_tdd/app /home/django/app
+COPY app /home/django/app
 
 # Create a virtual environment and install dependencies
 # virtualenv is a tool to create isolated Python environments
