@@ -3,7 +3,6 @@ LABEL maintainer="Hallas, l.l.c"
 
 ENV PYTHONUNBUFFERED 1
 # Allows instant viewing of logs
-
 EXPOSE 8000
 ARG DEV=false
 COPY ./requirements.txt /tmp/requirements.txt
