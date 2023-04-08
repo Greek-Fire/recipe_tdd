@@ -1,4 +1,4 @@
-FROM python:3.9
+FROM fedora:34
 LABEL maintainer="Hallas, l.l.c"
 
 ENV PYTHONUNBUFFERED 1
@@ -15,17 +15,16 @@ WORKDIR /app
 # virtualenv is a tool to create isolated Python environments
 # allows consistent installation of packages, incase the base python image changes
 # docker-compose will set the DEV to true for developement
-RUN python -m venv /py && \
+RUN yum install python postgresql-devel -y && \
+    python -m venv /py && \
     /py/bin/pip install --upgrade pip && \
     /py/bin/pip install -r /tmp/requirements.txt && \
     if [ $DEV = true ] ; then \
         pip install -r /tmp/requirements.dev.txt ; \
     fi && \
     rm -rf /tmp/* && \
-    addgroup django && \
     useradd \
     --password  ""\
-    -g django \
     django 
 
 ENV PATH="/py/bin:${PATH}"
