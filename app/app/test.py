@@ -1,12 +1,18 @@
 """
-Calculator function
+Sample tests
 """
 
+from django.test import SimpleTestCase
 
-def add(x, y):
-    """Add Function"""
-    return x + y
+from app import calc
 
-def subtract(x, y):
-    """Subtract Function"""
-    return y - x
+
+class CalcTests(SimpleTestCase):
+    def test_add_numbers(self):
+        """Test that two numbers are added together"""
+        self.assertEqual(calc.add(3, 8), 11)
+
+    def test_subtract_numbers(self):
+        """Test that values are subtracted and returned"""
+        self.assertEqual(calc.subtract(5, 11), 6)
+        
